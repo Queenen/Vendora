@@ -9,7 +9,7 @@ function Nav() {
   return (
     <nav className={styles.nav}>
       <div className={styles.topNav}>
-        <Link to="/home" className={styles.navLogo}>
+        <Link to="/" className={styles.navLogo}>
           <img
             src={`${process.env.PUBLIC_URL}/images/vendora-logo.png`}
             alt="Logo"
