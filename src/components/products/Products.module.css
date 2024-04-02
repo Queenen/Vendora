@@ -1,0 +1,54 @@
+.productsContainer {
+  background-color: rgb(234, 230, 230);
+  padding: 3rem;
+}
+
+.productsContainer h1 {
+  margin-bottom: 2rem;
+}
+
+.productsMasonry {
+  column-count: 4;
+  column-gap: 2rem;
+}
+
+.productCard {
+  break-inside: avoid;
+  margin-bottom: 2rem;
+  border-radius: 8px;
+  border-radius: 0 0 1rem 1rem;
+  cursor: pointer;
+}
+
+.productCard:hover {
+  border: none;
+  box-shadow: 0 0 10px rgb(78, 78, 78);
+}
+
+.productCard img {
+  width: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+button {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  background-color: goldenrod;
+  color: white;
+  cursor: pointer;
+  border-radius: 0 0 0.8rem 0.8rem;
+}
+
+@media (max-width: 768px) {
+  .productsMasonry {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .productsMasonry {
+    column-count: 1;
+  }
+}

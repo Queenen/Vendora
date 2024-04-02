@@ -5,7 +5,7 @@ import styles from "./Footer.module.css";
 function Footer() {
   return (
     <footer className={styles.footer}>
-      <Link to="/home" className={styles.footerLogo}>
+      <Link to="/" className={styles.footerLogo}>
         <img
           src={`${process.env.PUBLIC_URL}/images/vendora-logo.png`}
           alt="Logo"
