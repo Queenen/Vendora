@@ -34,7 +34,7 @@
 }
 
 .navLink:hover {
-  opacity: 0.5;
+  color: goldenrod;
 }
 
 .searchBar {
@@ -42,10 +42,16 @@
   padding: 0.75rem;
   width: 100%;
   box-sizing: border-box;
-  border: none;
+  border: 1.2px solid black;
   border-radius: 5px;
   max-width: 45rem;
   display: block;
+}
+
+.searchBar:focus {
+  outline: none;
+  border: 1.2px solid transparent; /* Maintain border size but make it transparent */
+  box-shadow: 0 0 10px rgb(241, 196, 82);
 }
 
 @media (min-width: 576px) {
