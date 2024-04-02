@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Cart from "../cart";
+import SearchBar from "../searchBar";
 import styles from "./Nav.module.css";
-import Cart from "../cart/";
 
-function Nav() {
+function Nav({ products }) {
   const itemCount = 1;
 
   return (
@@ -25,11 +26,7 @@ function Nav() {
         </div>
         <Cart itemCount={itemCount} />
       </div>
-      <input
-        className={styles.searchBar}
-        type="text"
-        placeholder="Search for products ..."
-      />
+      <SearchBar products={products} />
     </nav>
   );
 }
