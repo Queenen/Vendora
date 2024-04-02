@@ -6,9 +6,13 @@
   margin: 1.25rem 1rem 0 0;
 }
 
+.cart svg:hover {
+  stroke: goldenrod;
+}
+
 .itemCount {
   position: absolute;
-  top: -10px;
+  top: -8px;
   right: -10px;
   background-color: goldenrod;
   color: white;
