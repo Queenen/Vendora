@@ -31,16 +31,6 @@
   display: block;
 }
 
-button {
-  width: 100%;
-  padding: 1rem;
-  border: none;
-  background-color: goldenrod;
-  color: white;
-  cursor: pointer;
-  border-radius: 0 0 0.8rem 0.8rem;
-}
-
 @media (max-width: 768px) {
   .productsMasonry {
     column-count: 2;

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./Products.module.css";
+import Button from "../button/Button";
 
 function Products() {
   const [products, setProducts] = useState([]);
@@ -27,7 +28,7 @@ function Products() {
               src={product.image.url}
               alt={product.title || "Product Image"}
             />
-            <button>View Product</button>
+            <Button variant="roundbtm">View Product</Button>
           </div>
         ))}
       </div>
