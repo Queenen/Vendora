@@ -1,0 +1,26 @@
+:root {
+  --btncolor: orange;
+  --btnhover: rgb(219, 131, 0);
+  --whitesmoke: whitesmoke;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  line-height: 2rem;
+  box-sizing: border-box;
+}
+
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+
+$theme-colors: map-merge(
+  $theme-colors,
+  (
+    "btncolor": orange,
+    "btnhover": rgb(219, 131, 0),
+    "whitesmoke": whitesmoke,
+  )
+);
+
+@import "../node_modules/bootstrap/scss/bootstrap";
