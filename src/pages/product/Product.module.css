@@ -1,0 +1,7 @@
+#toggleReviews {
+  cursor: pointer;
+}
+
+.reviewsList {
+  list-style-type: none;
+}
