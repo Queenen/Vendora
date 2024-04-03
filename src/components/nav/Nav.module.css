@@ -34,7 +34,7 @@
 }
 
 .navLink:hover {
-  color: goldenrod;
+  color: orange;
 }
 
 @media (min-width: 576px) {
