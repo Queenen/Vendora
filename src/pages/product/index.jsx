@@ -72,7 +72,6 @@ const Product = () => {
   };
 
   const handleReviewToggle = () => {
-    // This ensures toggle only works when there are reviews
     if (productDetails.reviews.length > 0) {
       setShowRatings(!showRatings);
     }
