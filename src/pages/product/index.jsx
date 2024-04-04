@@ -39,7 +39,7 @@ const Product = () => {
   };
 
   const renderPrice = () => {
-    if (!productDetails) return null; // Guard clause for when productDetails is not yet set
+    if (!productDetails) return null;
     const { price, discountedPrice } = productDetails;
     const isDiscounted = discountedPrice < price;
     const percentOff = isDiscounted
@@ -137,3 +137,4 @@ const Product = () => {
 };
 
 export default Product;
+
