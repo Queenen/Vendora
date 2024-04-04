@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./Products.module.css";
 import Button from "../button/Button";
+import { fetchAllProducts } from "../../services/fetchProducts";
 
 function Products() {
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("https://v2.api.noroff.dev/online-shop")
-      .then((response) => response.json())
+    fetchAllProducts()
       .then((data) => setProducts(data.data))
       .catch((error) => console.error("Fetching products failed", error));
   }, []);
