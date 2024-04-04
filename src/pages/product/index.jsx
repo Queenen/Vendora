@@ -11,7 +11,7 @@ import useCart from "../../components/cart/useCart";
 const Product = () => {
   const [productDetails, setProductDetails] = useState(null);
   const [showRatings, setShowRatings] = useState(false);
-  const { addToCart } = useCart(); // Use the addToCart function from the useCart hook
+  const { addToCart } = useCart();
 
   const location = useLocation();
 
@@ -39,7 +39,7 @@ const Product = () => {
   const handleAddToCart = () => {
     console.log("Adding to cart:", productDetails);
     if (productDetails) {
-      addToCart(productDetails); // Pass the productDetails object to addToCart function
+      addToCart(productDetails);
     }
   };
 
@@ -100,7 +100,7 @@ const Product = () => {
             <Button
               variant="round"
               className={`mt-2 ${styles.button}`}
-              onClick={handleAddToCart} // Add onClick handler to call handleAddToCart function
+              onClick={handleAddToCart}
             >
               Add to Cart
             </Button>
