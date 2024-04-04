@@ -1,0 +1,7 @@
+#reviewsList {
+  list-style-type: none;
+  max-height: 200px;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0;
+}

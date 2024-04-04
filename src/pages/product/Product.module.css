@@ -1,15 +1,6 @@
-#toggleReviews {
+.toggleReviews {
   cursor: pointer;
-}
-
-.reviewsList {
-  max-height: 200px;
-  overflow-y: auto;
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-  max-height: 200px;
-  overflow-y: auto;
-  margin: 0;
-  padding: 0;
+  margin-left: 2rem;
+  font-size: 0.8rem;
+  text-decoration: underline;
 }
