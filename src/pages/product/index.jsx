@@ -38,20 +38,23 @@ const Product = () => {
     const reviewCount = productDetails ? productDetails.reviews.length : 0;
     return reviewCount > 0 ? (
       <>
-        <StarRating rating={productDetails.rating} />
-        <span
-          className={`ms-2 small text-decoration-underline pointer w-auto ${styles.toggleReviews}`}
-          onClick={handleReviewToggle}
-        >
-          {showRatings ? "Hide reviews" : `${reviewCount} reviews`}
-        </span>
+        <div className="d-flex">
+          <StarRating rating={productDetails.rating} />
+          <span
+            className={`ms-2 small pointer ${styles.toggleReviews}`}
+            onClick={handleReviewToggle}
+          >
+            {showRatings ? "Hide reviews" : `${reviewCount} reviews`}
+          </span>
+        </div>
       </>
     ) : (
-      <span
-        className={`ms-2 small text-decoration-underline pointer ${styles.toggleReviews}`}
-      >
-        No reviews yet
-      </span>
+      <div className="d-flex">
+        ☆☆☆☆☆
+        <span className={`ms-2 small ${styles.toggleReviews}`}>
+          No reviews yet
+        </span>
+      </div>
     );
   };
 

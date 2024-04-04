@@ -1,10 +1,12 @@
 import React from "react";
 
-const PriceDisplay = ({ price, discountedPrice, percentOff }) => {
+const PriceDisplay = ({ price, discountedPrice }) => {
+  const percentOff = ((1 - discountedPrice / price) * 100).toFixed(0);
+
   return (
     <div className="d-flex gap-3">
       Price:
-      {discountedPrice && (
+      {discountedPrice && discountedPrice !== price ? (
         <>
           <span className="text-danger text-decoration-line-through">
             ${price.toFixed(2)}
@@ -14,8 +16,9 @@ const PriceDisplay = ({ price, discountedPrice, percentOff }) => {
             ({percentOff}% OFF)
           </span>
         </>
+      ) : (
+        <span>${price.toFixed(2)}</span>
       )}
-      {!discountedPrice && <span>${price.toFixed(2)}</span>}
     </div>
   );
 };
