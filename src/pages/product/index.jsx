@@ -1,37 +1,29 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom"; // Import useLocation
+import { useLocation } from "react-router-dom";
 import styles from "./Product.module.css";
 import Button from "../../components/button/Button";
+import { fetchProductById } from "../../services/fetchProduct";
 
 const Product = () => {
   const [productDetails, setProductDetails] = useState(null);
   const [showRatings, setShowRatings] = useState(false);
 
-  const location = useLocation(); // Use location hook
+  const location = useLocation();
 
   useEffect(() => {
-    const search = location.search; // Use location to get search params
+    const search = location.search;
     const params = new URLSearchParams(search);
     const id = params.get("id");
     if (id) {
-      fetchProductDetails(id);
+      fetchProductById(id)
+        .then((response) => {
+          setProductDetails(response.data);
+        })
+        .catch((error) =>
+          console.error("Failed to fetch product details:", error)
+        );
     }
-  }, [location]); // Add location to useEffect dependency array
-
-  const fetchProductDetails = async (id) => {
-    try {
-      const response = await fetch(
-        `https://v2.api.noroff.dev/online-shop/${id}`
-      );
-      if (!response.ok) {
-        throw new Error("Product not found");
-      }
-      const { data } = await response.json();
-      setProductDetails(data);
-    } catch (error) {
-      console.error("Failed to fetch product details:", error);
-    }
-  };
+  }, [location]);
 
   const renderStars = (rating) => {
     const fullStars = Math.floor(rating);
@@ -47,6 +39,7 @@ const Product = () => {
   };
 
   const renderPrice = () => {
+    if (!productDetails) return null; // Guard clause for when productDetails is not yet set
     const { price, discountedPrice } = productDetails;
     const isDiscounted = discountedPrice < price;
     const percentOff = isDiscounted
@@ -55,31 +48,31 @@ const Product = () => {
 
     return (
       <div className="d-flex gap-3">
+        Price:
         {isDiscounted && (
           <>
             <span className="text-danger text-decoration-line-through">
-              ${price}
+              ${price.toFixed(2)}
             </span>
-            <span className="text-success">${discountedPrice}</span>
+            <span className="text-success">${discountedPrice.toFixed(2)}</span>
             <span className="text-success fs-5 fw-light">
               ({percentOff}% OFF)
             </span>
           </>
         )}
-        {!isDiscounted && <span>${price}</span>}
+        {!isDiscounted && <span>${price.toFixed(2)}</span>}
       </div>
     );
   };
 
   const handleReviewToggle = () => {
-    // This ensures toggle only works when there are reviews
-    if (productDetails.reviews.length > 0) {
+    if (productDetails && productDetails.reviews.length > 0) {
       setShowRatings(!showRatings);
     }
   };
 
   const renderReviewToggleText = () => {
-    const reviewCount = productDetails.reviews.length;
+    const reviewCount = productDetails ? productDetails.reviews.length : 0;
     return reviewCount > 0
       ? showRatings
         ? "Hide reviews"
@@ -100,7 +93,7 @@ const Product = () => {
           </section>
           <section className="row col-10 col-sm-8 col-md-6 col-lg-7 p-md-5">
             <h1 className="mb-3">{productDetails.title}</h1>
-            <p className="d-flex align-items-center">
+            <div className="d-flex align-items-center">
               {renderStars(productDetails.rating)}
               <div
                 className="ms-2 small text-decoration-underline pointer"
@@ -109,7 +102,7 @@ const Product = () => {
               >
                 {renderReviewToggleText()}
               </div>
-            </p>
+            </div>
             {showRatings && (
               <ul className={styles.reviewsList}>
                 {productDetails.reviews.map((review) => (
