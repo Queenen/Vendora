@@ -7,11 +7,10 @@ const Reviews = ({ reviews }) => {
     <ul id={styles.reviewsList}>
       {reviews.map((review) => (
         <li key={review.id} className="p-3 my-2 bg-whitesmoke rounded-3">
-          {" "}
           <div>
             <strong>{review.username}</strong>
           </div>
-          <StarRating rating={review.rating} />
+          <StarRating rating={review.rating || 0} />
           <div>{review.description}</div>
         </li>
       ))}
