@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom"; // Import useLocation
 import styles from "./Product.module.css";
 import Button from "../../components/button/Button";
 
@@ -6,14 +7,16 @@ const Product = () => {
   const [productDetails, setProductDetails] = useState(null);
   const [showRatings, setShowRatings] = useState(false);
 
+  const location = useLocation(); // Use location hook
+
   useEffect(() => {
-    const search = window.location.search;
+    const search = location.search; // Use location to get search params
     const params = new URLSearchParams(search);
     const id = params.get("id");
     if (id) {
       fetchProductDetails(id);
     }
-  }, []);
+  }, [location]); // Add location to useEffect dependency array
 
   const fetchProductDetails = async (id) => {
     try {
