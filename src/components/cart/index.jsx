@@ -1,6 +1,9 @@
+import React from "react";
+import useCart from "./useCart";
 import styles from "./Cart.module.css";
 
-function Cart({ itemCount }) {
+function Cart() {
+  const { itemCount } = useCart();
   const displayCount = itemCount > 99 ? "99+" : itemCount;
   const itemCountStyle = {
     right: itemCount > 99 ? "-16px" : "-10px",

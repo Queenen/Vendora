@@ -1,41 +1,37 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 function useCart() {
-  const [itemCount, setItemCount] = useState(0);
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(() => {
+    const storedCart = localStorage.getItem("cart");
+    return storedCart ? JSON.parse(storedCart) : [];
+  });
 
-  useEffect(() => {
-    const storedCart = JSON.parse(localStorage.getItem("cart"));
-    if (storedCart) {
-      setCart(storedCart);
-      setItemCount(
-        storedCart.reduce((total, item) => total + item.quantity, 0)
-      );
-    }
-  }, []);
+  const itemCount = cart.reduce((total, item) => total + item.quantity, 0);
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
-  const addToCart = (product) => {
-    const existingItemIndex = cart.findIndex((item) => item.id === product.id);
+  const addToCart = useCallback((product) => {
+    setCart((prevCart) => {
+      const existingIndex = prevCart.findIndex(
+        (item) => item.id === product.id
+      );
 
-    if (existingItemIndex !== -1) {
-      const updatedCart = [...cart];
-      updatedCart[existingItemIndex] = {
-        ...updatedCart[existingItemIndex],
-        quantity: updatedCart[existingItemIndex].quantity + 1,
-      };
-      setCart(updatedCart);
-    } else {
-      setCart([...cart, { ...product, quantity: 1 }]);
-    }
+      if (existingIndex !== -1) {
+        const updatedCart = [...prevCart];
+        updatedCart[existingIndex] = {
+          ...updatedCart[existingIndex],
+          quantity: updatedCart[existingIndex].quantity + 1,
+        };
+        return updatedCart;
+      }
 
-    setItemCount((prevCount) => prevCount + 1);
-  };
+      return [...prevCart, { ...product, quantity: 1 }];
+    });
+  }, []);
 
-  return { itemCount, cart, addToCart };
+  return { cart, itemCount, addToCart };
 }
 
 export default useCart;
