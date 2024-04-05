@@ -28,7 +28,7 @@ function Products() {
               src={product.image.url}
               alt={product.title || "Product Image"}
             />
-            <Button variant="roundbtm">View Product</Button>
+            <Button variant="halfround">View Product</Button>
           </div>
         ))}
       </div>

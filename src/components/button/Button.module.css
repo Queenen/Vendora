@@ -1,3 +1,4 @@
+.customBtn,
 .customBtn.round {
   padding: 10px 15px;
   border: none;
@@ -11,16 +12,12 @@
   width: 100%;
 }
 
+.customBtn.halfround {
+  border-radius: 0 0 1rem 1rem;
+}
+
 .customBtn.disabled {
-  padding: 10px 15px;
-  border: none;
-  border-radius: 1rem;
   background-color: gray;
-  color: white;
-  letter-spacing: 0.2rem;
-  font-size: 16px;
-  transition: background-color 0.3s;
-  width: 100%;
 }
 
 .customBtn.disabled:hover {
