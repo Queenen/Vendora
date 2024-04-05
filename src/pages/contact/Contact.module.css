@@ -1,0 +1,64 @@
+#contactPage {
+  background-image: url("../../../public/images/bag-wallpaper-2.webp");
+}
+
+#contactForm input,
+#contactForm textarea {
+  width: 100%;
+}
+
+#contactForm label {
+  background-color: transparent;
+}
+
+#contactForm,
+#contactIntro,
+#contactSuccess {
+  max-width: 30rem;
+}
+
+.noresize {
+  resize: none;
+}
+
+.floatingLabelGroup {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.floatingInput {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  border-radius: 0.5rem;
+  font-size: 16px;
+  padding: 10px 4px 4px 4px;
+  display: block;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.3s;
+  margin-top: 0.5rem;
+}
+
+.floatingLabel {
+  position: absolute;
+  pointer-events: none;
+  left: 10px;
+  top: 10px;
+  color: gray;
+  transition: 0.2s ease all;
+  background: white;
+  padding: 0 4px;
+  margin-left: -4px;
+}
+
+.floatingInput:not(:placeholder-shown) + .floatingLabel,
+.floatingInput:focus + .floatingLabel {
+  top: -10px;
+  left: 0px;
+  font-size: 12px;
+  color: var(--btncolor);
+}
+
+.floatingInput:focus {
+  border-color: var(--btncolor);
+}
