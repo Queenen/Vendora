@@ -6,10 +6,12 @@ import { fetchProductById } from "../../services/fetchProduct";
 import PriceDisplay from "../../utils/PriceDisplay";
 import StarRating from "../../utils/StarRating";
 import Reviews from "../../utils/reviews";
+import useCart from "../../components/cart/useCart";
 
 const Product = () => {
   const [productDetails, setProductDetails] = useState(null);
   const [showRatings, setShowRatings] = useState(false);
+  const { addToCart } = useCart();
 
   const location = useLocation();
 
@@ -31,6 +33,13 @@ const Product = () => {
   const handleReviewToggle = () => {
     if (productDetails && productDetails.reviews.length > 0) {
       setShowRatings(!showRatings);
+    }
+  };
+
+  const handleAddToCart = () => {
+    console.log("Adding to cart:", productDetails);
+    if (productDetails) {
+      addToCart(productDetails);
     }
   };
 
@@ -88,7 +97,11 @@ const Product = () => {
               <h2 className="mb-3">Description</h2>
               <p>{productDetails.description}</p>
             </div>
-            <Button variant="round" className={`mt-2 ${styles.button}`}>
+            <Button
+              variant="round"
+              className={`mt-2 ${styles.button}`}
+              onClick={handleAddToCart}
+            >
               Add to Cart
             </Button>
           </section>
