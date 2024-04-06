@@ -25,8 +25,8 @@ const CartItems = () => {
         <svg
           fill="currentColor"
           viewBox="0 0 16 16"
-          height="3em" // Adjusted for better visibility
-          width="3em" // Adjusted for better visibility
+          height="3em"
+          width="3em"
           className="mb-3"
         >
           <path d="M7.354 5.646a.5.5 0 10-.708.708L7.793 7.5 6.646 8.646a.5.5 0 10.708.708L8.5 8.207l1.146 1.147a.5.5 0 00.708-.708L9.207 7.5l1.147-1.146a.5.5 0 00-.708-.708L8.5 6.793 7.354 5.646z" />
