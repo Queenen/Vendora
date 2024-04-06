@@ -1,9 +1,15 @@
+import React from "react";
 import styles from "./CheckoutSuccess.module.css";
 import Button from "../../components/button/Button";
 import { Link } from "react-router-dom";
+import { useCartContext } from "../../contexts/CartContext";
 
 function CheckoutSuccess() {
-  localStorage.clear();
+  const { clearCart } = useCartContext();
+
+  React.useEffect(() => {
+    clearCart();
+  }, [clearCart]);
 
   return (
     <main
