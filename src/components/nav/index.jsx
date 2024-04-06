@@ -24,7 +24,9 @@ function Nav({ products }) {
             Contact
           </Link>
         </div>
-        <Cart itemCount={itemCount} />
+        <Link to="/cart">
+          <Cart itemCount={itemCount} />
+        </Link>
       </div>
       <SearchBar products={products} />
     </nav>
