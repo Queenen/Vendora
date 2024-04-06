@@ -1,0 +1,11 @@
+#checkoutPage {
+  background-image: url("/public/images/bag-wallpaper-2.webp");
+}
+
+.checkout {
+  max-width: 30rem;
+}
+
+.contactInfo p {
+  margin: 0;
+}
