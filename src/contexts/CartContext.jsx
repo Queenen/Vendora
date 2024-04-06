@@ -16,7 +16,21 @@ export const CartProvider = ({ children }) => {
     setCart([]);
   };
 
-  const addToCart = (product) => {};
+  const addToCart = (product) => {
+    setCart((prevCart) => {
+      const itemIndex = prevCart.findIndex((item) => item.id === product.id);
+      if (itemIndex > -1) {
+        const newCart = [...prevCart];
+        newCart[itemIndex] = {
+          ...newCart[itemIndex],
+          quantity: newCart[itemIndex].quantity + 1,
+        };
+        return newCart;
+      } else {
+        return [...prevCart, { ...product, quantity: 1 }];
+      }
+    });
+  };
 
   return (
     <CartContext.Provider value={{ cart, clearCart, addToCart }}>
