@@ -3,6 +3,8 @@ import Button from "../../components/button/Button";
 import { Link } from "react-router-dom";
 
 function CheckoutSuccess() {
+  localStorage.clear();
+
   return (
     <main
       className="container-fluid px-4 py-5 p-sm-5"
