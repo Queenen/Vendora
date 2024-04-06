@@ -1,0 +1,11 @@
+#checkoutSuccess {
+  background-image: url("/public/images/bag-wallpaper-2.webp");
+}
+
+#checkoutSuccessContent {
+  max-width: 35rem;
+}
+
+.orderNumber {
+  box-shadow: 0 0 10px goldenrod;
+}
