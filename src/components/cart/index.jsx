@@ -1,10 +1,12 @@
 import React from "react";
-import useCart from "./useCart";
+import { useCartContext } from "../../contexts/CartContext";
 import styles from "./Cart.module.css";
 
 function Cart() {
-  const { itemCount } = useCart();
+  const { cart } = useCartContext();
+  const itemCount = cart.reduce((total, item) => total + item.quantity, 0);
   const displayCount = itemCount > 99 ? "99+" : itemCount;
+
   const itemCountStyle = {
     right: itemCount > 99 ? "-16px" : "-10px",
   };

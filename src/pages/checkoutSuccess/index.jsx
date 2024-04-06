@@ -1,8 +1,16 @@
+import React from "react";
 import styles from "./CheckoutSuccess.module.css";
 import Button from "../../components/button/Button";
 import { Link } from "react-router-dom";
+import { useCartContext } from "../../contexts/CartContext";
 
 function CheckoutSuccess() {
+  const { clearCart } = useCartContext();
+
+  React.useEffect(() => {
+    clearCart();
+  }, [clearCart]);
+
   return (
     <main
       className="container-fluid px-4 py-5 p-sm-5"
