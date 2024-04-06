@@ -12,23 +12,19 @@ const CartItems = () => {
 
   const handleQuantityChange = (id, newQuantity) => {
     if (newQuantity < 1) {
-      // When decreasing below 1, confirm before removing
       const isConfirmed = window.confirm(
         "Are you sure you'd like to delete this item from the cart?"
       );
       if (isConfirmed) {
-        // Remove the item from the cart
         const updatedCart = cartItems.filter((item) => item.id !== id);
         setCartItems(updatedCart);
         localStorage.setItem("cart", JSON.stringify(updatedCart));
       }
-      return; // Stop the function from proceeding further
+      return;
     } else if (newQuantity > 10) {
-      // Ensure quantity is between 1 and 10
       return;
     }
 
-    // For normal quantity update
     const updatedCart = cartItems.map((item) =>
       item.id === id ? { ...item, quantity: newQuantity } : item
     );
