@@ -6,12 +6,12 @@ import { fetchProductById } from "../../services/fetchProduct";
 import PriceDisplay from "../../utils/PriceDisplay";
 import StarRating from "../../utils/StarRating";
 import Reviews from "../../utils/reviews";
-import useCart from "../../components/cart/useCart";
+import { useCartContext } from "../../contexts/CartContext";
 
 const Product = () => {
   const [productDetails, setProductDetails] = useState(null);
   const [showRatings, setShowRatings] = useState(false);
-  const { addToCart } = useCart();
+  const { addToCart } = useCartContext();
 
   const location = useLocation();
 
@@ -37,7 +37,7 @@ const Product = () => {
   };
 
   const handleAddToCart = () => {
-    //console.log("Adding to cart:", productDetails);
+    console.log("Adding to cart:", productDetails);
     if (productDetails) {
       addToCart(productDetails);
     }
