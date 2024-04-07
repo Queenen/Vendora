@@ -12,7 +12,7 @@ const PriceDisplay = ({ price, discountedPrice }) => {
             ${price.toFixed(2)}
           </span>
           <span className="text-success">${discountedPrice.toFixed(2)}</span>
-          <span className="text-success fs-5 fw-light">
+          <span className="text-success fs-5 fw-light text-nowrap">
             ({percentOff}% OFF)
           </span>
         </>
