@@ -74,7 +74,7 @@ const Product = () => {
       {productDetails ? (
         <>
           <section
-            className={`row col-10 col-sm-8 col-md-6 col-lg-5 img-fluid p-0 ${styles.productImage}`}
+            className={`row col-10 col-sm-8 col-md-6 col-lg-5 img-fluid p-0`}
           >
             <img
               src={productDetails.image.url}
@@ -83,9 +83,9 @@ const Product = () => {
             />
           </section>
           <section
-            className={`row col-10 col-sm-8 col-md-6 col-lg-7 p-md-5 ${styles.productDetails}`}
+            className={`row col-10 col-sm-8 col-md-6 col-lg-7 py-4 p-md-5`}
           >
-            <h1 className={`mb-3 ${styles.title}`}>{productDetails.title}</h1>
+            <h1 className={`mb-3`}>{productDetails.title}</h1>
             {renderReviewToggleText()}
             {showRatings && <Reviews reviews={productDetails.reviews} />}
             <PriceDisplay
