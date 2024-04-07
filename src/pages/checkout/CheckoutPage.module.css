@@ -1,5 +1,6 @@
 #checkoutPage {
   background-image: url("/public/images/bag-wallpaper-2.webp");
+  background-size: cover;
 }
 
 .checkout {
