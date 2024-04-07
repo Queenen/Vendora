@@ -4,11 +4,29 @@
   --whitesmoke: whitesmoke;
 }
 
+@font-face {
+  font-family: "Sylvie";
+  src: url("../public/fonts/Sylvie.otf");
+}
+
 * {
   margin: 0;
   padding: 0;
   line-height: 2rem;
   box-sizing: border-box;
+  font-family: "Syne", sans-serif;
+}
+
+a,
+button,
+input {
+  font-family: "Syne";
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Sylvie";
 }
 
 @import "../node_modules/bootstrap/scss/functions";

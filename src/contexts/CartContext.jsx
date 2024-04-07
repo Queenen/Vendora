@@ -12,9 +12,9 @@ export const CartProvider = ({ children }) => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
-  const clearCart = () => {
+  const clearCart = React.useCallback(() => {
     setCart([]);
-  };
+  }, []);
 
   const addToCart = (product) => {
     setCart((prevCart) => {
@@ -32,8 +32,25 @@ export const CartProvider = ({ children }) => {
     });
   };
 
+  const updateCartItem = (id, quantity) => {
+    setCart((prevCart) => {
+      return prevCart.reduce((acc, item) => {
+        if (item.id === id) {
+          if (quantity > 0) {
+            acc.push({ ...item, quantity });
+          }
+        } else {
+          acc.push(item);
+        }
+        return acc;
+      }, []);
+    });
+  };
+
   return (
-    <CartContext.Provider value={{ cart, clearCart, addToCart }}>
+    <CartContext.Provider
+      value={{ cart, clearCart, addToCart, updateCartItem }}
+    >
       {children}
     </CartContext.Provider>
   );

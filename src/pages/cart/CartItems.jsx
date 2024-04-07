@@ -1,37 +1,34 @@
-import React from "react";
 import { Link } from "react-router-dom";
+import { useCartContext } from "../../contexts/CartContext";
 import styles from "./CartPage.module.css";
 
-const CartItems = ({ cartItems, setCartItems }) => {
+const CartItems = () => {
+  const { cart, updateCartItem } = useCartContext();
+
   const handleQuantityChange = (id, newQuantity) => {
-    if (newQuantity > 10) return;
-
-    let updatedCart = cartItems.slice();
-
-    if (newQuantity >= 1) {
-      updatedCart = updatedCart.map((item) =>
-        item.id === id ? { ...item, quantity: newQuantity } : item
-      );
-    } else {
+    if (newQuantity < 1) {
       const isConfirmed = window.confirm(
         "Are you sure you'd like to delete this item from the cart?"
       );
-      if (isConfirmed) {
-        updatedCart = updatedCart.filter((item) => item.id !== id);
-      } else {
+      if (!isConfirmed) {
         return;
       }
+    } else if (newQuantity > 10) {
+      alert("You cannot add more than 10 of the same item.");
+      return;
     }
-
-    setCartItems(updatedCart);
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    updateCartItem(id, newQuantity);
   };
 
   return (
     <section id="cartItemList" className="container mt-4">
-      {cartItems.length > 0 ? (
-        cartItems.map((item) => (
-          <div key={item.id} className="row text-dark align-items-center mb-3">
+      <h1 className="mb-4 mb-md-5 text-center">Shopping Cart</h1>
+      {cart.length > 0 ? (
+        cart.map((item) => (
+          <div
+            key={item.id}
+            className="row text-dark align-items-center mb-3 justify-content-center"
+          >
             <div className="col-3 col-sm-auto">
               <Link to={`/product?id=${item.id}`}>
                 <div className={styles.imgContainer}>
@@ -59,10 +56,7 @@ const CartItems = ({ cartItems, setCartItems }) => {
                 className={`form-control text-center ${styles.quantityInput}`}
                 value={item.quantity}
                 onChange={(e) =>
-                  handleQuantityChange(
-                    item.id,
-                    Math.max(1, Math.min(10, parseInt(e.target.value)))
-                  )
+                  handleQuantityChange(item.id, parseInt(e.target.value) || 0)
                 }
               />
               <button

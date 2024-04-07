@@ -31,6 +31,13 @@
   display: block;
 }
 
+.errorMessage {
+  color: red;
+  margin: 5rem 0;
+  text-align: center;
+  font-size: 1.2em;
+}
+
 @media (max-width: 768px) {
   .productsMasonry {
     column-count: 2;

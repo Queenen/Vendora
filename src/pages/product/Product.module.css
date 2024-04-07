@@ -4,3 +4,11 @@
   font-size: 0.8rem;
   text-decoration: underline;
 }
+
+.errorMessage {
+  color: red;
+  text-align: center;
+  font-size: 1.2rem;
+  width: 100%;
+  margin: 8rem 0;
+}
