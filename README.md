@@ -1,3 +1,5 @@
+<img src="https://i.ibb.co/bXmncYM/vendora-screenshot.png" alt="vendora-screenshot" border="0" width="100%">
+
 # Vendora
 
 Bringing the latest trends directly to your doorstep, Vendora is an e-commerce platform designed with the modern shopper in mind. Leveraging real-time social media analytics, we ensure our catalog reflects the most current and desired products in the market.
