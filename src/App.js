@@ -6,6 +6,7 @@ import Contact from "./pages/contact";
 import CartPage from "./pages/cart";
 import CheckoutPage from "./pages/checkout";
 import CheckoutSuccess from "./pages/checkoutSuccess";
+import AboutPage from "./pages/about";
 import { CartProvider } from "./contexts/CartContext";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.scss";
@@ -23,6 +24,7 @@ function App() {
               <Route path="/cart" element={<CartPage />} />
               <Route path="/checkout" element={<CheckoutPage />} />
               <Route path="/checkoutSuccess" element={<CheckoutSuccess />} />
+              <Route path="/about" element={<AboutPage />} />
             </Route>
           </Routes>
         </Router>
