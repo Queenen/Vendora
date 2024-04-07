@@ -67,3 +67,7 @@
 .floatingInput:focus {
   border-color: var(--btncolor);
 }
+
+.receivedMsg {
+  font-family: "Syne", sans-serif;
+}
