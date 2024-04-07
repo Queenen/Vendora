@@ -1,4 +1,5 @@
 <img src="https://i.ibb.co/bXmncYM/vendora-screenshot.png" alt="vendora-screenshot" border="0" width="100%">
+<img src="https://i.ibb.co/n35XXLz/Capture-2.png" alt="Capture-2" border="0" width="100%">
 
 # Vendora
 
