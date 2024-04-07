@@ -1,37 +1,30 @@
-import React from "react";
 import { Link } from "react-router-dom";
+import { useCartContext } from "../../contexts/CartContext";
 import styles from "./CartPage.module.css";
 
-const CartItems = ({ cartItems, setCartItems }) => {
+const CartItems = () => {
+  const { cart, updateCartItem } = useCartContext();
+
   const handleQuantityChange = (id, newQuantity) => {
-    if (newQuantity > 10) return;
-
-    let updatedCart = cartItems.slice();
-
-    if (newQuantity >= 1) {
-      updatedCart = updatedCart.map((item) =>
-        item.id === id ? { ...item, quantity: newQuantity } : item
-      );
-    } else {
+    if (newQuantity < 1) {
       const isConfirmed = window.confirm(
         "Are you sure you'd like to delete this item from the cart?"
       );
-      if (isConfirmed) {
-        updatedCart = updatedCart.filter((item) => item.id !== id);
-      } else {
+      if (!isConfirmed) {
         return;
       }
+    } else if (newQuantity > 10) {
+      alert("You cannot add more than 10 of the same item.");
+      return;
     }
-
-    setCartItems(updatedCart);
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    updateCartItem(id, newQuantity);
   };
 
   return (
     <section id="cartItemList" className="container mt-4">
       <h1 className="mb-4 mb-md-5 text-center">Shopping Cart</h1>
-      {cartItems.length > 0 ? (
-        cartItems.map((item) => (
+      {cart.length > 0 ? (
+        cart.map((item) => (
           <div
             key={item.id}
             className="row text-dark align-items-center mb-3 justify-content-center"
@@ -63,10 +56,7 @@ const CartItems = ({ cartItems, setCartItems }) => {
                 className={`form-control text-center ${styles.quantityInput}`}
                 value={item.quantity}
                 onChange={(e) =>
-                  handleQuantityChange(
-                    item.id,
-                    Math.max(1, Math.min(10, parseInt(e.target.value)))
-                  )
+                  handleQuantityChange(item.id, parseInt(e.target.value) || 0)
                 }
               />
               <button
@@ -88,7 +78,6 @@ const CartItems = ({ cartItems, setCartItems }) => {
         ))
       ) : (
         <div className="d-flex flex-column gap-4 align-items-center py-5">
-          <h1 className="mb-4 mb-md-5">Shopping Cart</h1>
           <svg fill="currentColor" viewBox="0 0 16 16" height="3em" width="3em">
             <path d="M7.354 5.646a.5.5 0 10-.708.708L7.793 7.5 6.646 8.646a.5.5 0 10.708.708L8.5 8.207l1.146 1.147a.5.5 0 00.708-.708L9.207 7.5l1.147-1.146a.5.5 0 00-.708-.708L8.5 6.793 7.354 5.646z" />
             <path d="M.5 1a.5.5 0 000 1h1.11l.401 1.607 1.498 7.985A.5.5 0 004 12h1a2 2 0 100 4 2 2 0 000-4h7a2 2 0 100 4 2 2 0 000-4h1a.5.5 0 00.491-.408l1.5-8A.5.5 0 0014.5 3H2.89l-.405-1.621A.5.5 0 002 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
