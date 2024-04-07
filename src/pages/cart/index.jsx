@@ -29,7 +29,6 @@ function CartPage() {
   return (
     <>
       <div className="container-fluid p-3 p-sm-5 py-5" id={styles.cartPage}>
-        <h1 className="pb-4 pb-md-5 ps-3">Shopping Cart</h1>
         <CartItems cartItems={cartItems} setCartItems={setCartItems} />
         <section
           className="row mx-auto gap-4 py-5 col-10"
