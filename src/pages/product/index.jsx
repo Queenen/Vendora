@@ -37,7 +37,6 @@ const Product = () => {
   };
 
   const handleAddToCart = () => {
-    console.log("Adding to cart:", productDetails);
     if (productDetails) {
       addToCart(productDetails);
     }
