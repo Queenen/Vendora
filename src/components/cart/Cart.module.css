@@ -1,9 +1,9 @@
 .cart {
+  margin-top: 1.25rem;
   position: relative;
   cursor: pointer;
   display: flex;
   align-items: center;
-  margin: 1.25rem 1rem 0 0;
 }
 
 .cart svg:hover {
@@ -25,4 +25,10 @@
   align-items: center;
   justify-content: center;
   line-height: 1.2rem;
+}
+
+@media (min-width: 576px) {
+  .cart {
+    margin-left: 1rem;
+  }
 }
