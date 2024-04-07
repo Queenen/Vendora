@@ -1,19 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import CartItems from "./CartItems";
 import Button from "../../components/button/Button";
 import styles from "./CartPage.module.css";
 import { useNavigate } from "react-router-dom";
+import { useCartContext } from "../../contexts/CartContext";
 
 function CartPage() {
-  const [cartItems, setCartItems] = useState([]);
   const navigate = useNavigate();
+  const { cart } = useCartContext();
 
-  useEffect(() => {
-    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-    setCartItems(cart);
-  }, []);
-
-  const totalPrice = cartItems
+  const totalPrice = cart
     .reduce(
       (acc, item) => acc + (item.discountedPrice || item.price) * item.quantity,
       0
@@ -21,7 +17,7 @@ function CartPage() {
     .toFixed(2);
 
   const handleButtonClick = () => {
-    if (cartItems.length > 0) {
+    if (cart.length > 0) {
       navigate("/checkout");
     }
   };
@@ -29,7 +25,7 @@ function CartPage() {
   return (
     <>
       <div className="container-fluid p-3 p-sm-5 py-5" id={styles.cartPage}>
-        <CartItems cartItems={cartItems} setCartItems={setCartItems} />
+        <CartItems />
         <section
           className="row mx-auto gap-4 py-5 col-10"
           id={styles.calculateShipping}
@@ -54,7 +50,7 @@ function CartPage() {
           </div>
           <Button
             onClick={handleButtonClick}
-            variant={cartItems.length > 0 ? "rounded" : "disabled"}
+            variant={cart.length > 0 ? "rounded" : "disabled"}
           >
             Next Step
           </Button>
