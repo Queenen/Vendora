@@ -1,44 +1,13 @@
-.nav {
-  display: flex;
-  flex-direction: column;
-  background-color: whitesmoke;
-  color: black;
-  padding: 1rem;
-}
-
-.topNav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .navLogo img {
   height: 50px;
 }
 
-.navLinks {
+.navLink {
   margin-top: 1.25rem;
-  display: flex;
-  align-items: center;
-  margin-left: auto;
-}
-
-.navLinks a {
-  margin-right: 20px;
   text-decoration: none;
   color: black;
 }
 
-.navLink:first-child {
-  margin-left: 20px;
-}
-
 .navLink:hover {
   color: orange;
-}
-
-@media (min-width: 576px) {
-  .nav {
-    padding: 2rem;
-  }
 }
