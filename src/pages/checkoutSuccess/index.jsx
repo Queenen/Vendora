@@ -37,7 +37,7 @@ function CheckoutSuccess() {
               className="text-success"
             />
           </svg>
-          <h1 className="mb-0 mb-md-4 text-success display-4 fw-normal">
+          <h1 className="mb-0 mb-md-4 text-success display-5 fw-normal">
             Payment Successful!
           </h1>
         </div>
