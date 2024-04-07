@@ -81,13 +81,12 @@ const ContactForm = () => {
         className="col-10 mx-auto my-5 d-flex flex-column gap-2"
         id={styles.contactIntro}
       >
-        <h1>Contact us</h1>
+        <h1 className="mb-4">Contact us</h1>
         <p>
-          We're thrilled you're here! 😄 Whether you have a question, a
-          brilliant idea to share, or just want to say hello, we're all ears.
-          Our team is dedicated to providing you with the support you need and
-          making sure your experience with us is as smooth and enjoyable as
-          possible.
+          We're thrilled you're here! Whether you have a question, a brilliant
+          idea to share, or just want to say hello, we're all ears. Our team is
+          dedicated to providing you with the support you need and making sure
+          your experience with us is as smooth and enjoyable as possible.
         </p>
         <p>
           Don't hesitate to fill out the form below with your details and
