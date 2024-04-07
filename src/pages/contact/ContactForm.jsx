@@ -52,7 +52,7 @@ const ContactForm = () => {
               className="col-md-6 d-flex flex-column justify-content-center my-4 order-md-1"
               id={styles.contactSuccess}
             >
-              <h2 className="mb-3 fs-4">
+              <h2 className={`mb-3 fs-4 ${styles.receivedMsg}`}>
                 We have just received your message! ✉
               </h2>
               <p className="mb-0">
