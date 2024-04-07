@@ -12,9 +12,9 @@ export const CartProvider = ({ children }) => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
-  const clearCart = () => {
+  const clearCart = React.useCallback(() => {
     setCart([]);
-  };
+  }, []);
 
   const addToCart = (product) => {
     setCart((prevCart) => {
