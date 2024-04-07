@@ -3,6 +3,10 @@
   background-size: cover;
 }
 
+#contactForm {
+  box-shadow: 0 0 10px rgb(78, 78, 78);
+}
+
 #contactForm input,
 #contactForm textarea {
   width: 100%;
